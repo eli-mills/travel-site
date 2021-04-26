@@ -37,14 +37,64 @@
     &__menu-icon{
         width: 20px;
         height: 20px;
-        background-color: white;
         position: absolute;
         z-index: 10;
         top: 10px;
         right: 10px;
 
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 3px;
+            background-color: white;
+            transform-origin: left;
+            transition: transform .3s ease-out;
+        }
+
+        &__middle {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-1.5px);
+            width: 20px;
+            height: 3px;
+            background-color: white;
+            transform-origin: left;
+            transition: all .3s ease-out;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 20px;
+            height: 3px;
+            background-color: white;
+            transform-origin: left;
+            transition: transform .3s ease-out;
+        }
+
         @mixin atMedium{
             display: none;
+        }
+
+        &--close-x {
+            &::before {
+                transform: rotate(45deg) scaleX(1.225);
+            }
+
+            .site-header__menu-icon__middle {
+                opacity: 0;
+                transform: translateY(-1.5px) scaleX(0);
+            }
+
+            &::after {
+                transform: rotate(-45deg) scaleX(1.225);
+            }
         }
     }
 
