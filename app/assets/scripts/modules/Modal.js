@@ -3,18 +3,15 @@ class Modal {
         this.injectHTML();
         this.modal = document.querySelector(".modal");
         this.closeIcon = document.querySelector(".modal__close");
-        this.openModalButtons = document.querySelectorAll(".open-modal");
         this.events();
     }
 
     events() {
-        this.openModalButtons.forEach(el => el.addEventListener("click", e => this.openTheModal(e)))
         this.closeIcon.addEventListener("click", () => this.closeTheModal());
         document.addEventListener("keyup", e => this.keyPressHandler(e));
     }
 
-    openTheModal(e) {
-        e.preventDefault();
+    openTheModal() {
         this.modal.classList.add("modal--is-visible");
 
     }
